@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="normlusr/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		
+		<div class="card mr-4 ml-4">
+		
+			<div class="card-body">
+				<h1 class="text-center">Setting</h1>
+				
+				<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert text-center" role="alert">
+ 							 <p th:text="${session.message.content}"></p>
+ 							 <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+						</div>
+				
+				<div class="container text-center mt-4">
+					
+					<button onclick="showpass()" class="btn btn-outline-danger show" style="font-style: italic;">Change password</button>
+				</div>
+					<div class="container-fluid mt-4" id="pform" style="display: none;">
+						<div class="row">
+							<div class="col-sm-4 offset-md-4">
+							
+							<form action="" th:action="@{/user/process-password}" method="post">
+							
+								<label>Current Password</label>
+							    <div class="form-group pass_show"> 
+					                <input required type="password" name="oldPassword" class="form-control" placeholder="Current Password"> 
+					            </div> 
+							       <label>New Password</label>
+					            <div class="form-group pass_show"> 
+					                <input required type="password" name="newPassword" class="form-control" placeholder="New Password"> 
+					            </div> 
+					            
+					            <div class="container text-center">
+					            
+					            	<button class="btn btn-success" type="submit">Change</button>
+					            	<button class="btn btn-warning" type="reset">Reset</button>
+					            
+					            </div>
+							
+							
+							</form>
+							    
+							</div>  
+						</div>
+					</div>
+				
+				</div>
+
+			
+			</div>		
+		
+
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active-focous");
+				$("#setting-id").addClass("active-focous");
+			})
+			
+			const showpass = () => {
+				if($("#pform").is(":visible")) {
+					$("#pform").css("display", "none");
+				} else {
+					$("#pform").css("display", "block");
+				}
+			}
+			
+
+		</script>
+
+	</section> 	
+</body>
+</html>

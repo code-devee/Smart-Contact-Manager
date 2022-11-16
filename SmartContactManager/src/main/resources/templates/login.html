@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="wrapper">
+			<div class="logo">
+				<img
+					src="../img/login.png"
+					alt="">
+			</div>
+			<div class="text-center mt-4 name">Login</div>
+			
+			<div th:if="${param.error}" class="alert alert-danger">
+				<p>Invalid username or password</p>
+			</div>
+			
+			<div th:if="${param.logout}" class="alert alert-success">
+				<p>You have been logged out</p>
+			</div>
+			
+			<div th:if="${session.message}"
+				th:classappend="${session.message.type}" class="alert text-center"
+				role="alert">
+				<p th:text="${session.message.content}"></p>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
+			
+			<form class="p-3 mt-3" th:action="@{/dologin}" action="#" method="post">
+				<div class="form-field d-flex align-items-center">
+					<span class="far fa-user"></span> <input type="text"
+						name="username" id="userName" placeholder="Username">
+				</div>
+				<div class="form-field d-flex align-items-center">
+					<span class="fas fa-key"></span> <input type="password"
+						name="password" id="pwd" placeholder="Password">
+				</div>
+				<button class="btn mt-3">Login</button>
+				
+				
+				<div class="container text-center mt-1">
+				
+					<a href="" th:href="@{/forgot}">Forgot password?</a>
+				
+				</div>
+				
+			</form>
+		</div>
+
+	</section>
+</body>
+</html>

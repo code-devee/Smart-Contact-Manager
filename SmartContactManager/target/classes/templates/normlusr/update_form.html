@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="normlusr/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="card mr-4 ml-4" id="add-card">
+			
+			<div class="card-body">
+				<h1 class="text-center">Update Contact</h1>
+				
+				<!-- <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert text-center" role="alert">
+ 							 <p th:text="${session.message.content}"></p>
+ 							 <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+						</div> -->
+				
+				<div class="container-fluid mt-1">
+					
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<form action="#" th:object="${contact}"
+								th:action="@{/user/update-contact}"
+								enctype="multipart/form-data"
+								method="POST"
+								class="mt-2">
+								
+								<!-- Contact ID --> 
+								
+								<input type="hidden" name="cId" th:value="${contact.cId}" />
+								
+								<!-- First Name --> 
+								<div class="input-group mt-3">
+								
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											
+											<i class="fa fa-user alt"></i>
+										
+										</div>
+									
+									</div>
+									
+									<input required type="text" id="firstName" name="name" placeholder="Enter Firstname" th:value="${contact.name}" class="form-control">
+								
+								</div>
+								
+								<!-- Second Name --> 
+								<div class="input-group mt-3">
+								
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											
+											<i class="fa fa-plus"></i>
+										
+										</div>
+									
+									</div>
+									
+									<input required type="text" id="lastName" name="lastName" placeholder="Enter Secondname" th:value="${contact.lastName}" class="form-control">
+								
+								</div>
+								
+								<!-- work --> 
+								<div class="input-group mt-3">
+								
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											
+											<i class="fa-solid fa-briefcase"></i>
+										
+										</div>
+									
+									</div>
+									
+									<input required type="text" id="work" name="work" placeholder="Enter Profession" th:value="${contact.work}" class="form-control">
+								
+								</div>
+								
+								<!-- email --> 
+								<div class="input-group mt-3">
+								
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											
+											<i class="fa-regular fa-at"></i>
+										
+										</div>
+									
+									</div>
+									
+									<input required type="email" id="emailid" name="email" placeholder="Enter Email" th:value="${contact.email}" class="form-control">
+								
+								</div>
+								
+								<!-- Phonenumber --> 
+								<div class="input-group mt-3">
+								
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											
+											<i class="fa-solid fa-mobile"></i>
+										
+										</div>
+									
+									</div>
+									
+									<input required type="number" min="10" id="phonenumber" name="phone" placeholder="Enter Phone number" th:value="${contact.phone}" class="form-control">
+								
+								</div>
+								
+								<!-- description field here --> 
+								<div class="input-group mt-3">
+								
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											
+											<i class="fa-solid fa-message"></i>
+										
+										</div>
+									
+									</div>
+									
+									<textarea name="description" id="mytextarea" rows="5" class="form-control" th:text="${contact.description}" placeholder="Enter your Address"></textarea>
+								
+								</div>
+								
+								<div class="container text-center mt-3">
+								
+									<img style="height: 110px; width: 110px;" class="profile_pic" src="" th:src="@{'/img/'+${contact.image}}" alt="profile img" />
+								
+								</div>
+								
+								
+								<div class="custom-file mt-3">
+								
+									<input type="file" name="profileImage" placeholder="change profile photo" />
+								</div>
+								
+								<div class="container text-center mt-3">
+									
+									<button class="btn btn-outline-warning" type="submit">Update contact</button>
+								
+								
+								</div>
+							
+							</form>
+						
+						</div>
+					
+					</div>
+					
+				</div>
+			
+			</div>
+		
+		</div>
+		
+	</section>
+</body>
+</html>

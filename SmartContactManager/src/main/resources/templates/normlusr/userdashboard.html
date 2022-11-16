@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="normlusr/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section class="banner d-flex justify-content-center align-items-center mr-3 ml-3">
+		<div class="text-center">
+			<h2 class="font-weight-bold">Hi <span th:text="${user.name}"></span></h2>
+			<p><h4 th:text="${user.about}"></h4>
+			<h5 th:text="${user.role}"></h5></p>
+			<a href="" th:href="@{/user/add-contact}" class="btn btn-primary btn-lg">Add Contact</a>
+		</div>
+
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active-focous");
+				$("#home-id").addClass("active-focous");
+			})
+
+		</script>
+
+	</section> 	
+</body>
+</html>

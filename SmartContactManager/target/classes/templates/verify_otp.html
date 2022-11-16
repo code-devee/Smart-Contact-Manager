@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="wrapper">
+			<div class="logo">
+				<img
+					src="../img/ques.png"
+					alt="">
+			</div>
+			
+			<div class="alert alert-info mt-1" role="alert">
+			 An OTP has been sent successfully to your mail.
+			</div>
+			
+			<div th:if="${session.message}"
+				th:classappend="${session.message.type}" class="alert text-center"
+				role="alert">
+				<p th:text="${session.message.content}"></p>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
+			
+			<div class="text-center mt-4 name">Enter OTP to verify</div>
+			
+			<form class="p-3 mt-3" th:action="@{/process-otp}" action="#" method="post">
+				<div class="form-field d-flex align-items-center">
+					<span class="far fa-user"></span> <input required type="number"
+						name="otp" id="otp" placeholder="Enter OTP sent to your email">
+				</div>
+				<button class="btn mt-3">Verify</button>
+
+				
+			</form>
+		</div>
+
+	</section>
+</body>
+</html>
